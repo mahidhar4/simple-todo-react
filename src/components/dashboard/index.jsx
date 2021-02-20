@@ -33,21 +33,19 @@ ElevationScroll.propTypes = {
   window: PropTypes.func
 };
 
-export default ({ user }) => {
+export default props => {
   return (
     <>
       <CssBaseline />
       <ElevationScroll {...props}>
         <AppBar>
-          <Toolbar>
-            
-          </Toolbar>
+          <Toolbar />
         </AppBar>
       </ElevationScroll>
       <Toolbar />
       <Container>
         <Box my={2}>
-          <h1>Hello {user?.token?.name}!</h1>
+          <h1>Hello {props?.user?.token?.name}!</h1>
         </Box>
       </Container>
     </>
