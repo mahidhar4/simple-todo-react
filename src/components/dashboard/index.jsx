@@ -1,48 +1,41 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
+import { withRouter } from "react-router";
 
-function ElevationScroll(props) {
-  const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0
-  });
-}
-
-ElevationScroll.propTypes = {
-  children: PropTypes.element.isRequired,
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func
-};
-
-export default props => {
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  }
+}));
+const DashBoard = props => {
+  const classes = useStyles();
   return (
     <>
-      <CssBaseline />
-      <ElevationScroll {...props}>
-        <AppBar>
-          <Toolbar />
-        </AppBar>
-      </ElevationScroll>
-      <Toolbar />
+      <AppBar position="static" color="white">
+        <Toolbar>
+          <Typography variant="h6" className={classes.title}>
+            News
+          </Typography>
+          <Button color="inherit" onClick={() => {
+            sessionStorage.removeItem('userInfo');
+            props.history.push('/');
+          }}>Logout</Button>
+        </Toolbar>
+      </AppBar>
       <Container>
         <Box my={2}>
           <h1>Hello {props?.user?.token?.name}!</h1>
@@ -51,3 +44,5 @@ export default props => {
     </>
   );
 };
+
+export default withRouter(DashBoard);

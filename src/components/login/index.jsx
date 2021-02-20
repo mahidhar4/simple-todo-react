@@ -50,15 +50,9 @@ const Login = props => {
   const { history } = props;
   const onSubmitLogin = async () => {
     const logiInfo = await fetch("/login.json");
-    // ,{
-    //   method: "GET", // or 'PUT'
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-    //   // body: JSON.stringify(loginData)
-    // });
     const userInfo = await logiInfo.json();
-    sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
+    console.log(userInfo);
+    sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
     history.push("/dahboard");
   };
 
