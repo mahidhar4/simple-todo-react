@@ -19,24 +19,32 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
+  },
+  content: {
+    marginTop: theme.spacing(8)
   }
 }));
 const DashBoard = props => {
   const classes = useStyles();
   return (
     <>
-      <AppBar position="static" color="white">
+      <AppBar position="fixed" color="transparent">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button color="inherit" onClick={() => {
-            sessionStorage.removeItem('userInfo');
-            props.history.push('/');
-          }}>Logout</Button>
+          <Button
+            color="inherit"
+            onClick={() => {
+              sessionStorage.removeItem("userInfo");
+              props.history.go("/");
+            }}
+          >
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
-      <Container>
+      <Container className={classes.content}>
         <Box my={2}>
           <h1>Hello {props?.user?.token?.name}!</h1>
         </Box>

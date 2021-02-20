@@ -53,7 +53,7 @@ const Login = props => {
     const userInfo = await logiInfo.json();
     console.log(userInfo);
     sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
-    history.push("/dahboard");
+    history.go("/dahboard");
   };
 
   return (
