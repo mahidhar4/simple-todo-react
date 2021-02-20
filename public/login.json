@@ -1,4 +1,7 @@
 {
-  "name" : "Mahesh",
-  "id": "mahidhar.kumar@gmail.com"
+  "token": {
+    "name": "User Name",
+    "token": "f94b01164ea17050a61e859b"
+  },
+  "image": "/images/profile.jpg"
 }

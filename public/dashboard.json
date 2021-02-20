@@ -1,0 +1,10 @@
+{
+  "tasksCompleted": 10,
+  "totalTasks": 19,
+  "latestTasks": [
+    {
+      "name": "Refactor something",
+      "completed": false
+    }
+  ]
+}
